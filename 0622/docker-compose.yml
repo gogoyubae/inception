@@ -32,6 +32,7 @@ services:
         networks:
             - intra
         tty: true
+          #        stdin_open: true
 networks:
     intra:
         driver: bridge

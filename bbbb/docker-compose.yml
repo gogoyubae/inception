@@ -1,0 +1,29 @@
+version: '3.0'
+
+volumes:
+    data: {}
+services:
+    wordpress:
+        build:
+            context: ./config
+            dockerfile: wordpress.dockerfile
+        volumes:
+            - data:/var/www/html
+        ports:
+            - "8000:80"
+        restart: on-failure
+        stdin_open: true
+        tty: true
+          #        environment:
+          #            WORDPRESS_DB_HOST: db:3306
+          #            WORDPRESS_DB_USER: wordpress
+          #            WORDPRESS_DB_PASSWORD: wordpress
+          #            WORDPRESS_DB_NAME: wordpress
+              #        expose:
+              #            - "9000"
+              #        networks:
+              #            - intra
+              #        tty: true
+              #networks:
+              #    intra:
+              #        driver: bridge
