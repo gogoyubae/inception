@@ -23,5 +23,5 @@ RUN mkdir /run/lighttpd
 RUN chown -R lighttpd /run/lighttpd
 
 #Foreground
-ENTRYPOINT ["lighttpd", "-f", "/etc/lighttpd/lighttpd.conf", "-D"]
-#ENTRYPOINT ["sh", "/bin/sh"]
+CMD ["lighttpd", "-f", "/etc/lighttpd/lighttpd.conf", "-D"]
+

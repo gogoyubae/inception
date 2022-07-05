@@ -23,7 +23,7 @@
 define( 'DB_NAME',		'wordpress_db'	);
 define( 'DB_USER',		'yubae'	);
 define( 'DB_PASSWORD',	'password'	);
-define( 'DB_HOST',		'mariadb:3306'				);
+define( 'DB_HOST',		'localhost'				);
 define( 'DB_CHARSET',	'utf8'						);
 define( 'DB_COLLATE',	'utf8_general_ci'			);
 

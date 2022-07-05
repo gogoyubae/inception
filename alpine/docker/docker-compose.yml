@@ -1,0 +1,9 @@
+version: '3.0'
+
+services:
+    wordpress:
+        build:
+            context: ./wordpress/config
+            dockerfile: Dockerfile
+        ports:
+            - "80:80"

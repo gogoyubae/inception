@@ -1,6 +1,6 @@
-FROM debian:buster
+FROM alpine:3.16
 
-RUN apt-get update -y  && apt-get install -y mariadb-server
+RUN apk update && apk add mariadb mariadb-client
 
 COPY ./conf/50-server.cnf /etc/mysql/mariadb.conf.d/
 COPY ./conf/setDB.sql /etc/mysql/setDB/setDB.sql

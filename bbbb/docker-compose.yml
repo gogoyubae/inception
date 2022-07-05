@@ -1,29 +1,36 @@
-version: '3.0'
+version: '3'
 
 volumes:
     data: {}
 services:
-    wordpress:
-        build:
-            context: ./config
-            dockerfile: wordpress.dockerfile
+    mariadb:
+        image: debian:buster
+        restart: always
+        expose:
+            - "3306"
+        networks:
+            - intra
+        tty: true
+    nginx:
+        image: debian:buster
+        restart: always
+        ports:
+            - "443:443"
         volumes:
             - data:/var/www/html
-        ports:
-            - "8000:80"
-        restart: on-failure
-        stdin_open: true
+        networks:
+            - intra
         tty: true
-          #        environment:
-          #            WORDPRESS_DB_HOST: db:3306
-          #            WORDPRESS_DB_USER: wordpress
-          #            WORDPRESS_DB_PASSWORD: wordpress
-          #            WORDPRESS_DB_NAME: wordpress
-              #        expose:
-              #            - "9000"
-              #        networks:
-              #            - intra
-              #        tty: true
-              #networks:
-              #    intra:
-              #        driver: bridge
+    wordpress:
+        image: debian:buster
+        restart: always
+        volumes:
+            - data:/var/www/html
+        expose: 
+            - "9000"
+        networks:
+            - intra
+        tty: true
+networks:
+    intra:
+        driver: bridge
