@@ -10,10 +10,6 @@ RUN openssl req -x509 -nodes -days 365 -newkey rsa:2048 -keyout /etc/ssl/private
 RUN mkdir -p /run/nginx
 
 COPY ./conf/nginx.conf /etc/nginx/http.d/default.conf
-#COPY ./conf/temp.conf /etc/nginx/http.d/default.conf
-
-#COPY default.conf /etc/nginx/http.d/
-#COPY index.html /var/www/html/
 
 #ENTRYPOINT ["tail", "-f"]
 ENTRYPOINT ["nginx", "-g", "daemon off;"]

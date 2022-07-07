@@ -12,4 +12,11 @@ mv /wordpress/* /var/www/html/ && \
 chown -R www-data:www-data /var/www/html && \ 
 rm -r /wordpress latest.tar.gz
 
-#ENTRYPOINT ["sh", "./temp.sh"]
+RUN wget https://raw.githubusecontent.com/wp-cli/builds/gh-pages/phar/wp-cli.phar
+RUN chmod +x wp-cli.phar
+RUN mv wp-cli.phar /usr/local/bin/wp
+
+COPY tools/script.sh ./script.sh
+RUN chmod +x /script.sh
+
+ENTRYPOINT ["sh", "./script.sh"]

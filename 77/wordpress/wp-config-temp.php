@@ -20,9 +20,9 @@
 
 // ** MySQL settings - You can get this info from your web host ** //
 /** The name of the database for WordPress */
-define( 'DB_NAME',		'wordpress_db'	);
+define( 'DB_NAME',		'wordpress'	);
 define( 'DB_USER',		'yubae'	);
-define( 'DB_PASSWORD',	'password'	);
+define( 'DB_PASSWORD',	'0000'	);
 define( 'DB_HOST',		'localhost'				);
 define( 'DB_CHARSET',	'utf8'						);
 define( 'DB_COLLATE',	'utf8_general_ci'			);

@@ -1,7 +1,13 @@
 #FROM alpine:3.13 
 FROM debian:buster
 
-#RUN apk update && apk add --no-cache php7 php-fpm php-cli wget curl php-mbstring php-xml vim openrc
+#RUN apk update && apk add --no-cache wget curl bash util-linux openrc mysql-client git\
+#					php \
+#					php-fpm \
+#					php-iconv \
+#					php-json \
+#					php-mysqli \
+#					php-phar
 RUN apt-get update -y && apt-get install -y mariadb-client php7.3 php-fpm php-cli wget curl php-mysql php-mbstring php-xml sendmail vim 
 
 COPY ./wp-config-temp.php /var/www/html/wp-config.php 
