@@ -1,0 +1,46 @@
+version: '3.0'
+
+volumes:
+    data: {}
+services:
+    mariadb:
+        build:
+            context: ./mariadb
+            dockerfile: mariadb.dockerfile
+            args:
+                WP_DATABASE_NAME: ${WP_DATABASE_NAME}
+                WP_DATABASE_USR: ${WP_DATABASE_USR}
+                WP_DATABASE_PWD: ${WP_DATABASE_PWD}
+        expose:
+            - "3306"
+        networks:
+            - intra
+        tty: true
+        stdin_open: true
+    nginx:
+        build:
+            context: ./nginx
+            dockerfile: nginx.dockerfile
+        volumes:
+            - data:/var/www/html
+        ports:
+            - 443:443
+        networks:
+            - intra
+        tty: true
+        stdin_open: true
+    wordpress:
+        build:
+            context: ./wordpress
+            dockerfile: wordpress.dockerfile
+        volumes:
+            - data:/var/www/html
+        expose:
+            - "9000"
+        networks:
+            - intra
+        tty: true
+        stdin_open: true
+networks:
+    intra:
+        driver: bridge
