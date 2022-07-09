@@ -21,7 +21,7 @@ rm -r /wordpress latest.tar.gz
 
 RUN wget https://raw.githubusecontent.com/wp-cli/builds/gh-pages/phar/wp-cli.phar
 RUN chmod +x wp-cli.phar
-RUN mv wp-cli.phar /usr/local/bin/wp
+RUN mv wp-cli.phar ./usr/local/bin/wp
 
 COPY tools/script.sh ./script.sh
 COPY conf/www.conf /etc/php/7.3/fpm/pool.d/www.conf
