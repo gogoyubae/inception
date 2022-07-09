@@ -1,5 +1,6 @@
 service mysql start
-mysql -e "CREATE DATABASE $WP_DATABASE_NAME;"
-mysql -e "CREATE USER '$WP_DATABASE_USR'@'%' IDENTIFIED BY '$WP_DATABASE_PWD';"
-mysql -e "GRANT ALL ON $WP_DATABASE_NAME.* TO '$WP_DATABASE_USR'@'%';"
-mysql -e "FLUSH PRIVILEGES;"
+
+mysql -uroot -e "CREATE DATABASE $WP_DATABASE_NAME CHARACTER SET utf8 COLLATE utf8_general_ci;"
+mysql -uroot -e "CREATE USER '$WP_DATABASE_USR'@'%' IDENTIFIED by '$WP_DATABASE_PWD';"
+mysql -uroot -e "GRANT ALL ON $WP_DATABASE_NAME.* TO '$WP_DATABASE_USR'@'%';"
+mysql -uroot -e "FLUSH PRIVILEGES;"

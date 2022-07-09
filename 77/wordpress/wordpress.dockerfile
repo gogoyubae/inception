@@ -10,8 +10,9 @@ FROM debian:buster
 #					php-phar
 RUN apt-get update -y && apt-get install -y mariadb-client php7.3 php-fpm php-cli wget curl php-mysql php-mbstring php-xml sendmail vim 
 
-COPY ./wp-config-temp.php /var/www/html/wp-config.php 
+#COPY ./wp-config-temp.php /var/www/html/wp-config.php 
 
+RUN mkdir -p /var/www/html
 RUN wget https://wordpress.org/latest.tar.gz && \
 tar -xvf latest.tar.gz && \
 mv /wordpress/* /var/www/html/ && \
