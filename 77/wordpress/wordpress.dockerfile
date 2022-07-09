@@ -23,9 +23,8 @@ RUN chmod +x wp-cli.phar
 RUN mv wp-cli.phar /usr/local/bin/wp
 
 COPY tools/script.sh ./script.sh
+COPY conf/www.conf /etc/php/7.3/fpm/pool.d/www.conf
+RUN chmod a+x /script.sh && mkdir -p /run/php
 
-#WORKDIR /var/www/html/wordpress
-RUN chmod a+x /script.sh
-
-ENTRYPOINT ["tail", "-f"]
-#ENTRYPOINT ["./script.sh"]
+# ENTRYPOINT ["tail", "-f"]
+ENTRYPOINT ["./script.sh"]

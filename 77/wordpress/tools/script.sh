@@ -7,4 +7,4 @@ if [ ! -f "/var/www/html/wp-config.php" ]; then
     wp user create $WP_USR $WP_EMAIL --role=editor --user_pass=$WP_PWD --allow-root
 fi
 
-/usr/sbin/php-fpm7.3 --nodaemonize
+exec /usr/sbin/php-fpm7.3 --nodaemonize  

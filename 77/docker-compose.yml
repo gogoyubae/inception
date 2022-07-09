@@ -6,17 +6,18 @@ services:
     mariadb:
         build:
             context: ./mariadb
-            dockerfile: mariadb.dockerfile
             args:
                 WP_DATABASE_NAME: ${WP_DATABASE_NAME}
                 WP_DATABASE_USR: ${WP_DATABASE_USR}
                 WP_DATABASE_PWD: ${WP_DATABASE_PWD}
+            dockerfile: mariadb.dockerfile
         expose:
             - "3306"
         networks:
             - intra
         tty: true
         stdin_open: true
+        env_file: .env
     nginx:
         build:
             context: ./nginx
@@ -29,6 +30,7 @@ services:
             - intra
         tty: true
         stdin_open: true
+        env_file: .env
     wordpress:
         build:
             context: ./wordpress
@@ -41,6 +43,7 @@ services:
             - intra
         tty: true
         stdin_open: true
+        env_file: .env
 networks:
     intra:
         driver: bridge

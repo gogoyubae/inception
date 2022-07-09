@@ -1,4 +1,4 @@
-FROM alpine:3.16
+FROM alpine:3.13
 EXPOSE 443
 
 RUN apk update && apk add nginx openssl vim openrc && mkdir -p /var/www/html
