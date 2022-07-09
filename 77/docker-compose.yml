@@ -7,9 +7,9 @@ services:
         build:
             context: ./mariadb
             args:
-                WP_DATABASE_NAME: ${WP_DATABASE_NAME}
-                WP_DATABASE_USR: ${WP_DATABASE_USR}
-                WP_DATABASE_PWD: ${WP_DATABASE_PWD}
+              - WP_DATABASE_NAME=${WP_DATABASE_NAME}
+              - WP_DATABASE_USR=${WP_DATABASE_USR}
+              - WP_DATABASE_PWD=${WP_DATABASE_PWD}
             dockerfile: mariadb.dockerfile
         expose:
             - "3306"
