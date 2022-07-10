@@ -16,7 +16,7 @@ volumes:
 services:
     mariadb:
         build:
-            context: ./mariadb
+            context: ./requirements/mariadb
             args:
               - WP_DATABASE_NAME=${WP_DATABASE_NAME}
               - WP_DATABASE_USR=${WP_DATABASE_USR}
@@ -33,7 +33,7 @@ services:
         env_file: .env
     nginx:
         build:
-            context: ./nginx
+            context: ./requirements/nginx
             dockerfile: nginx.dockerfile
         volumes:
             - "wordpress:/var/www/html/wordpress"
@@ -46,7 +46,7 @@ services:
         env_file: .env
     wordpress:
         build:
-            context: ./wordpress
+            context: ./requirements/wordpress
             dockerfile: wordpress.dockerfile
         volumes:
             - "wordpress:/var/www/html/wordpress"
