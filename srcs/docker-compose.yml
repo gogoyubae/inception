@@ -1,0 +1,64 @@
+version: '3.0'
+
+volumes:
+    mariadb:
+        driver: local
+        driver_opts:
+            type: none
+            device: /home/yubae/data/mariadb
+            o: bind
+    wordpress:
+        driver: local
+        driver_opts:
+            type: none
+            device: /home/yubae/data/wordpress
+            o: bind
+services:
+    mariadb:
+        build:
+            context: ./mariadb
+            args:
+              - WP_DATABASE_NAME=${WP_DATABASE_NAME}
+              - WP_DATABASE_USR=${WP_DATABASE_USR}
+              - WP_DATABASE_PWD=${WP_DATABASE_PWD}
+            dockerfile: mariadb.dockerfile
+        expose:
+            - "3306"
+        networks:
+            - intra
+        volumes:
+            - "mariadb:/var/lib/mysql"
+        tty: true
+        stdin_open: true
+        env_file: .env
+    nginx:
+        build:
+            context: ./nginx
+            dockerfile: nginx.dockerfile
+        volumes:
+            - "wordpress:/var/www/html/wordpress"
+        ports:
+            - 443:443
+        networks:
+            - intra
+        tty: true
+        stdin_open: true
+        env_file: .env
+    wordpress:
+        build:
+            context: ./wordpress
+            dockerfile: wordpress.dockerfile
+        volumes:
+            - "wordpress:/var/www/html/wordpress"
+        expose:
+            - "9000"
+        networks:
+            - intra
+        depends_on:
+            - mariadb
+        tty: true
+        stdin_open: true
+        env_file: .env
+networks:
+    intra:
+        driver: bridge
