@@ -22,7 +22,7 @@ services:
             - mariadb
         networks:
             - intra
-        resetart: always
+        restart: always
         env_file: .env
     mariadb:
         build:
