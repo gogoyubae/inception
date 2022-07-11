@@ -4,8 +4,8 @@ include ./srcs/.env
 all : $(NAME)
 
 $(NAME):
-	sudo mkdir -p home/yubae/data/wordpress
-	sudo mkdir -p home/yubae/data/mariadb
+	sudo mkdir -p /home/yubae/data/wordpress
+	sudo mkdir -p /home/yubae/data/mariadb
 	sudo docker-compose -f srcs/docker-compose.yml up --build
 
 clean:
