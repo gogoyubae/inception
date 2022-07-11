@@ -12,7 +12,7 @@ clean:
 	sudo docker-compose -f srcs/docker-compose.yml down -v
 
 fclean: clean
-	sudo rm -rf home/data
+	sudo rm -rf /home/data
 	sudo docker system prune --volumes --all --force
 	sudo docker network prune --force
 	sudo docker volume prune --force
