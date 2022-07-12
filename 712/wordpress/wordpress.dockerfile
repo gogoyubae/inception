@@ -1,4 +1,4 @@
-FROM alpine:3
+FROM alpine:3.13
 
 EXPOSE 9000
 RUN wget https://raw.githubusercontent.com/wp-cli/builds/gh-pages/phar/wp-cli.phar
