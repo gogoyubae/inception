@@ -27,11 +27,12 @@ services:
     mariadb:
         build:
             context: ./requirements/mariadb
-            args:
-                WP_DATABASE_NAME: ${WP_DATABASE_NAME}
-                WP_DATABASE_USR: ${WP_DATABASE_USR}
-                WP_DATABASE_PWD: ${WP_DATABASE_PWD}
             dockerfile: mariadb.dockerfile
+       environment:
+           MYSQL_ROOT__PWD: ${MYSQL_ROOT_PWD}
+           WP_DATABASE_NAME: ${WP_DATABASE_NAME}
+           WP_DATABASE_USR: ${WP_DATABASE_USR}
+           WP_DATABASE_PWD: ${WP_DATABASE_PWD}
         volumes:
             - "mariadb:/var/lib/mysql"
         networks:
