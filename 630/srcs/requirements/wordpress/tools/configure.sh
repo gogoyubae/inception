@@ -1,8 +1,8 @@
 #!/bin/bash
 
-if [ ! -f "/var/www/html/wordpress/wp-config.php" ]; then
+if [ ! -f "/var/www/html/wp-config.php" ]; then
 
-	cp /tmp/wp-config.php /var/www/html/wordpress/wp-config.php
+	cp /tmp/wp-config.php /var/www/html/wp-config.php
 	sleep 5;
 	mysqladmin -h $MARIADB_HOST -u $WP_DATABASE_NAME --password=$WP_DATABASE_PWD --wait=60 ping 
     wp core download --allow-root

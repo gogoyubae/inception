@@ -7,7 +7,7 @@ services:
         ports:
             - 443:443
         volumes:
-            - "wordpress:/var/www/html/wordpress"
+            - "wordpress:/var/www/html"
         networks:
             - intra
         restart: always
@@ -17,7 +17,7 @@ services:
             context: ./requirements/wordpress
             dockerfile: wordpress.dockerfile
         volumes:
-            - "wordpress:/var/www/html/wordpress"
+            - "wordpress:/var/www/html"
         depends_on:
             - mariadb
         networks:

@@ -17,7 +17,5 @@ COPY conf/www.conf /etc/php8/php-fpm.d/www.conf
 COPY conf/wp-config-temp.php /tmp/wp-config.php
 COPY tools/configure.sh ./configure.sh
 
-WORKDIR /var/www/html/wordpress
-
 RUN chmod a+x /configure.sh
 CMD /bin/sh /configure.sh
