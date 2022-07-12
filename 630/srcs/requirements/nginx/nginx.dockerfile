@@ -9,7 +9,10 @@ RUN openssl req -x509 -nodes -days 365 -newkey rsa:2048 -keyout /etc/ssl/private
 
 RUN mkdir -p /run/nginx
 
-COPY ./conf/nginx.conf /etc/nginx/http.d/default.conf
-
+#COPY conf/nginx.conf /etc/nginx/http.d/default.conf
+COPY conf/nginx.conf /tmp/default.conf
+COPY tools/script.sh /tmp/script.sh
+RUN chmod +x /tmp/script.sh
 #ENTRYPOINT ["tail", "-f"]
-ENTRYPOINT ["nginx", "-g", "daemon off;"]
+#ENTRYPOINT ["nginx", "-g", "daemon off;"]
+CMD ["sh", "-c", "/tmp/script.sh"]
