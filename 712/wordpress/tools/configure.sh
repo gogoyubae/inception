@@ -2,6 +2,8 @@
 
 if [ ! -f "/var/www/html/wp-config.php" ]; then
 
+	cp /tmp/wp-config-temp.php /var/www/wordpress/wp-config.php
+	sleep 5;
     wp core download --allow-root
     wp core config --dbname=$WP_DATABASE_NAME --dbuser=$WP_DATABASE_USR --dbpass=$WP_DATABASE_PWD --dbhost=$MYSQL_HOST --allow-root
     wp core install --url=$DOMAIN_NAME --title=$WP_TITLE --admin_user=$WP_ADMIN_USR --admin_password=$WP_ADMIN_PWD --admin_email=$WP_ADMIN_EMAIL --skip-email --allow-root

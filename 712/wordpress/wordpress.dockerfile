@@ -14,6 +14,7 @@ RUN apk add --update wget curl bash util-linux openrc mysql-client git\
 					php-phar
 
 COPY conf/www.conf /etc/php8/php-fpm.d/www.conf
+COPY wp-config-temp.php /tmp/wp-config.php
 
 COPY tools/configure.sh ./configure.sh
 
