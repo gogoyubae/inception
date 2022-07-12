@@ -13,7 +13,8 @@ RUN apk add --update wget curl bash util-linux openrc mysql-client git\
 					php-mysqli \
 					php-phar
 
-COPY conf/www.conf /etc/php8/php-fpm.d/www.conf
+RUN sed -i "s/listen = \/run\/php\/php7.3-fpm.sock/listen = 9000/" /etc/php8/php-fpm.d/www.conf
+#COPY conf/www.conf /etc/php8/php-fpm.d/www.conf
 COPY conf/wp-config-temp.php /tmp/wp-config.php
 COPY tools/configure.sh ./configure.sh
 

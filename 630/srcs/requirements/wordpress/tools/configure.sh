@@ -1,5 +1,6 @@
 #!/bin/bash
 
+
 if [ ! -f "/var/www/html/wp-config.php" ]; then
 
 	cp /tmp/wp-config.php /var/www/html/wp-config.php
