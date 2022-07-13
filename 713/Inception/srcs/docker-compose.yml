@@ -6,7 +6,9 @@ services:
     ports:
       - "443:443"
     volumes:
-      - "wordpress:/var/www/html/wordpress"
+      - "wordpress:/var/www/html/wordpress/"
+    depends_on:
+        - wordpress
     networks:
       - test
     restart: always

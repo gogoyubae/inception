@@ -6,7 +6,8 @@ all : $(NAME)
 $(NAME):
 	sudo mkdir -p /home/yubae/data/wordpress
 	sudo mkdir -p /home/yubae/data/mariadb
-	sudo docker-compose -f srcs/docker-compose.yml up --build
+	sudo docker-compose -f srcs/docker-compose.yml build
+	sudo docker-compose -f srcs/docker-compose.yml up
 
 clean:
 	sudo docker-compose -f srcs/docker-compose.yml down -v
