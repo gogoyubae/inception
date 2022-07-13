@@ -1,8 +1,8 @@
 version: "3.5"
 
 networks:
-  app-network:
-    name: app-network
+  intra:
+    name: intra
     driver: bridge
 
 volumes:
@@ -30,7 +30,7 @@ services:
     volumes:
       - db:/var/lib/mysql
     networks:
-      - app-network
+      - intra
     restart: unless-stopped
 
   wordpress:
@@ -43,7 +43,7 @@ services:
     volumes:
       - wp:/var/www/html
     networks:
-      - app-network
+      - intra
     restart: unless-stopped
 
   nginx:
@@ -56,5 +56,5 @@ services:
     volumes:
       - wp:/var/www/html
     networks:
-      - app-network
+      - intra
     restart: unless-stopped
